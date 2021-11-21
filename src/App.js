@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 // import * as BooksAPI from './BooksAPI'
 import './App.css'
 
@@ -14,13 +14,13 @@ import './App.css'
 // }
 
 function App() {
-  // const [showSearchPage, setshowSearchPage] = useState(false)
+  const [showSearchPage, setshowSearchPage] = useState(false)
   return (
     <div className="app">
-    {this.state.showSearchPage ? (
+    {showSearchPage ? (
       <div className="search-books">
         <div className="search-books-bar">
-          <button className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</button>
+          <button className="close-search" onClick={() => setshowSearchPage(false)}>Close</button>
           <div className="search-books-input-wrapper">
             {/*
               NOTES: The search from BooksAPI is limited to a particular set of search terms.
@@ -195,7 +195,7 @@ function App() {
           </div>
         </div>
         <div className="open-search">
-          <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
+          <button onClick={() => setshowSearchPage(true)}>Add a book</button>
         </div>
       </div>
     )}
