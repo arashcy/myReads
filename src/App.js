@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-// import * as BooksAPI from './BooksAPI'
+import React, { useEffect, useState } from 'react'
+import * as BooksAPI from './BooksAPI'
 import './App.css'
 
 
@@ -15,6 +15,23 @@ import './App.css'
 
 function App() {
   const [showSearchPage, setshowSearchPage] = useState(false)
+  const [searchResults, setSearchResults] = useState([])
+  const handleSearchInput = async (e)=> {
+    console.log(searchResults);
+    console.log(e.target.value);
+    const res = await BooksAPI.search(e.target.value)
+    console.log(res);
+    setSearchResults(res || [])
+    console.log(searchResults);
+  }
+  const search = async () => {
+    const res = await BooksAPI.getAll()
+    // console.log(res);
+  }
+  useEffect(() => {
+    search()
+  }, [])
+
   return (
     <div className="app">
     {showSearchPage ? (
@@ -30,12 +47,28 @@ function App() {
               However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
               you don't find a specific author or title. Every search is limited by search terms.
             */}
-            <input type="text" placeholder="Search by title or author"/>
+            <input onChange={handleSearchInput} type="text" placeholder="Search by title or author"/>
 
           </div>
         </div>
         <div className="search-books-results">
-          <ol className="books-grid"></ol>
+          <ol className="books-grid">
+          { //TODO: remove this
+              console.log(searchResults)
+            }
+            {
+              searchResults.length> 0? (
+                searchResults.map(book => (
+                  <li class="search-item" key={book.id}>
+                    {book.imageLinks? (<img class="thumbnail" src={book.imageLinks.smallThumbnail}></img>): ([])}
+                    <h4>{book.title}</h4>
+                  </li>
+                  )
+                )
+              ) : (<li>Empty</li>)
+            }
+           
+          </ol>
         </div>
       </div>
     ) : (
