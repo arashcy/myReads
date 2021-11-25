@@ -1,19 +1,10 @@
-import React, { useEffect, useState } from "react";
-import * as BooksAPI from "./BooksAPI";
+import React from "react";
 import "./App.css";
 
 function Book({book}) {
-  const [showSearchPage, setshowSearchPage] = useState(false);
-  const [searchResults, setSearchResults] = useState([]);
-  const change = async (book, e) => {
-    console.log(book.id, e.target.value);
-    const res = await BooksAPI.update(book, e.target.value);
-    console.log(res);
-  };
-  console.log(book);
   return (
     <div>
-      <li>
+      <li key={book.id}>
         <div className="book">
           <div className="book-top">
             <div
