@@ -31,7 +31,10 @@ function App() {
   useEffect(() => {
     search()
   }, [])
-
+  const change = async (book, e)=> {
+    console.log(book.id, e.target.value);
+    //TODO: Implement change
+  }
   return (
     <div className="app">
     {showSearchPage ? (
@@ -60,7 +63,24 @@ function App() {
               searchResults.length> 0? (
                 searchResults.map(book => (
                   <li class="search-item" key={book.id}>
-                    {book.imageLinks? (<img class="thumbnail" src={book.imageLinks.smallThumbnail}></img>): ([])}
+                    <div className="book">
+                      <div className="book-top">
+                      {book.imageLinks? (<div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>): ([])}
+                      
+                        {/* {book.imageLinks? (<img class="thumbnail" src={book.imageLinks.smallThumbnail}></img>): ([])} */}
+                        <div className="book-shelf-changer">
+                          <select onChange={(e)=> change(book, e)}>
+                            <option value="move" disabled>Move to...</option>
+                            <option value="currentlyReading">Currently Reading</option>
+                            <option value="wantToRead">Want to Read</option>
+                            <option value="read">Read</option>
+                            <option value="none">None</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div className="book-title">{book.title}</div>
+                      <div className="book-authors">{book.authors}</div>
+                    </div>
                     <h4>{book.title}</h4>
                   </li>
                   )
