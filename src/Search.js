@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Search({change, searchResultsChild}) {
+export default function Search({changeChild, searchResultsChild}) {
 
     return (
         <div className="search-books-results">
@@ -29,7 +29,7 @@ export default function Search({change, searchResultsChild}) {
                     }
                     {" "}
                     <div className="book-shelf-changer">
-                        <select onChange={(e) => change(book, e)}>
+                        <select onChange={(e) => changeChild(book, e)}>
                         <option value="move" disabled>
                             {" "}
                             Move to...{" "}

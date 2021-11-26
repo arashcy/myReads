@@ -9,10 +9,11 @@ function App() {
   const [allBooks, setAllBooks] = useState([])
   const search = async () => {
     const res = await BooksAPI.getAll()
-    // console.log(res);
+    console.log('search');
     setAllBooks(res)
-
   }
+  // console.log('app.js render', allBooks);
+  console.log('app.js render');
   useEffect(() => {
     search()
   }, [])
@@ -28,9 +29,9 @@ function App() {
         </div>
         <div className="list-books-content">
           <div>
-            <BookContainer allBooks={allBooks} type='currentlyReading' title='Currently Reading'/>
-            <BookContainer allBooks={allBooks} type='wantToRead' title='Want to Read'/>
-            <BookContainer allBooks={allBooks} type='read' title='Read'/>
+            <BookContainer setAllBooksChild={setAllBooks} allBooks={allBooks} type='currentlyReading' title='Currently Reading'/>
+            <BookContainer setAllBooksChild={setAllBooks} allBooks={allBooks} type='wantToRead' title='Want to Read'/>
+            <BookContainer setAllBooksChild={setAllBooks} allBooks={allBooks} type='read' title='Read'/>
           </div>
         </div>
         <div className="open-search">
