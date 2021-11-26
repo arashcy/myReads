@@ -3,7 +3,7 @@ import * as BooksAPI from "./BooksAPI";
 import Search from "./Search";
 import SearchBar from "./SearchBar";
 
-export default function SearchContainer({ myBooks, updateAllBooks, setShowSearchPageChild }) {
+export default function SearchContainer({ myBooks, updateMyBooks, setShowSearchPage }) {
   const [searchResults, setSearchResults] = useState([]);
   const handleSearchInput = async (e) => {
     let res = await BooksAPI.search(e.target.value);
@@ -18,22 +18,31 @@ export default function SearchContainer({ myBooks, updateAllBooks, setShowSearch
     }
     setSearchResults(res || []);
   };
-  const change = async (book, e) => {
-    await BooksAPI.update(book, e.target.value);
-    const allBooks = await BooksAPI.getAll()
-    console.log('search container ');
-    updateAllBooks(allBooks)
+  const change = async (updatedBook, e) => {
+    const updatedShelf = e.target.value;
+    updateSearchedBook(updatedBook, updatedShelf)
+    await BooksAPI.update(updatedBook, updatedShelf);
+    updateMyBooks(await BooksAPI.getAll())    
   };
-  console.log('search container');
+  const updateSearchedBook = (updatedBook, updatedShelf)=> {
+    const updatedResults = searchResults.map(searchedBook=> {
+      if(searchedBook.id === updatedBook.id){
+        return {...searchedBook, shelf: updatedShelf}
+      }
+      return searchedBook
+    })
+    console.log(updatedResults, updatedBook, updatedShelf);
+    setSearchResults(updatedResults)
+  }
   return (
     <div className="search-books">
         <SearchBar
-            setShowSearchPageChild={setShowSearchPageChild}
-            handleSearchInputChild={handleSearchInput}
+            setShowSearchPage={setShowSearchPage}
+            handleSearchInput={handleSearchInput}
         />
         <Search            
-            changeChild={change}
-            searchResultsChild={searchResults}
+            change={change}
+            searchResults={searchResults}
         />
     </div>
   );

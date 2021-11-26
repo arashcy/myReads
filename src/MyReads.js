@@ -1,7 +1,7 @@
 import React from "react";
 import BookContainer from "./BookContainer";
 
-export default function MyReads({setShowSearchPage, allBooks, setAllBooks}) {
+export default function MyReads({setShowSearchPage, myBooks, setMyBooks}) {
   return (
     <div className="list-books">
       <div className="list-books-title">
@@ -10,20 +10,20 @@ export default function MyReads({setShowSearchPage, allBooks, setAllBooks}) {
       <div className="list-books-content">
         <div>
           <BookContainer
-            setAllBooksChild={setAllBooks}
-            allBooks={allBooks}
+            setMyBooks={setMyBooks}
+            myBooks={myBooks}
             type="currentlyReading"
             title="Currently Reading"
           />
           <BookContainer
-            setAllBooksChild={setAllBooks}
-            allBooks={allBooks}
+            setMyBooks={setMyBooks}
+            myBooks={myBooks}
             type="wantToRead"
             title="Want to Read"
           />
           <BookContainer
-            setAllBooksChild={setAllBooks}
-            allBooks={allBooks}
+            setMyBooks={setMyBooks}
+            myBooks={myBooks}
             type="read"
             title="Read"
           />

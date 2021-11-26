@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 
-function Book({book, changeChild}) {
+function Book({book, change}) {
   console.log('book.js render');
   return (
 
@@ -17,7 +17,7 @@ function Book({book, changeChild}) {
               }}
             ></div>
             <div className="book-shelf-changer">
-              <select value={book.shelf || 'none'} onChange={(e)=> changeChild(book, e)}>
+              <select value={book.shelf || 'none'} onChange={(e)=> change(book, e)}>
                 <option value="move" disabled>
                   Move to...
                 </option>

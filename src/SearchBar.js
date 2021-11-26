@@ -1,22 +1,22 @@
 import React from "react";
 
 export default function SearchBar({
-  setShowSearchPageChild,
-  handleSearchInputChild,
+  setShowSearchPage,
+  handleSearchInput,
 }) {
   return (
     <div>
       <div className="search-books-bar">
         <button
           className="close-search"
-          onClick={() => setShowSearchPageChild(false)}
+          onClick={() => setShowSearchPage(false)}
         >
           {" "}
           Close{" "}
         </button>{" "}
         <div className="search-books-input-wrapper">
           <input
-            onChange={handleSearchInputChild}
+            onChange={handleSearchInput}
             type="text"
             placeholder="Search by title or author"
           />
