@@ -2,8 +2,9 @@ import React from "react";
 import "./App.css";
 
 function Book({book, changeChild}) {
+  console.log('book.js render');
   return (
-      <li key={book.id}>
+
         <div className="book">
           <div className="book-top">
             <div
@@ -16,7 +17,7 @@ function Book({book, changeChild}) {
               }}
             ></div>
             <div className="book-shelf-changer">
-              <select onChange={(e)=> changeChild(book, e)}>
+              <select value={book.shelf || 'none'} onChange={(e)=> changeChild(book, e)}>
                 <option value="move" disabled>
                   Move to...
                 </option>
@@ -30,7 +31,6 @@ function Book({book, changeChild}) {
           <div className="book-title">{book.title}</div>
           <div className="book-authors">{book.authors}</div>
         </div>
-      </li>
   );
 }
 

@@ -6,13 +6,11 @@ import SearchContainer from './SearchContainer'
 
 function App() {
   const [showSearchPage, setShowSearchPage] = useState(false)
-  const [allBooks, setAllBooks] = useState([])
+  const [allBooks, setAllBooks] = useState([]) //TODO: change allbooks to mybooks
   const search = async () => {
     const res = await BooksAPI.getAll()
-    console.log('search');
     setAllBooks(res)
   }
-  // console.log('app.js render', allBooks);
   console.log('app.js render');
   useEffect(() => {
     search()
@@ -21,7 +19,7 @@ function App() {
   return (
     <div className="app">
     {showSearchPage ? (
-      <SearchContainer setShowSearchPageChild={setShowSearchPage}/>
+      <SearchContainer myBooks={allBooks}setShowSearchPageChild={setShowSearchPage} updateAllBooks={setAllBooks}/>
     ) : (
       <div className="list-books">
         <div className="list-books-title">

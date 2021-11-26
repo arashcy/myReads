@@ -19,7 +19,7 @@ export default function BookContainer({setAllBooksChild, allBooks, type, title})
           <ol className="books-grid">
             {allBooks.map((book) => {
               if (book.shelf === type)
-                return <Book book={book} changeChild={change}/>;
+                return <li key={book.id}><Book book={book} changeChild={change}/></li>;
             })}
           </ol>
         </div>
