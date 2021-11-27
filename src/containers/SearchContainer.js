@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import * as BooksAPI from "./BooksAPI";
-import Search from "./Search";
-import SearchBar from "./SearchBar";
+import * as BooksAPI from "../BooksAPI";
+import Search from "../components/Search";
+import SearchBar from "../components/SearchBar";
 
 export default function SearchContainer({ myBooks, updateMyBooks, setShowSearchPage }) {
   const [searchResults, setSearchResults] = useState([]);
@@ -31,7 +31,6 @@ export default function SearchContainer({ myBooks, updateMyBooks, setShowSearchP
       }
       return searchedBook
     })
-    console.log(updatedResults, updatedBook, updatedShelf);
     setSearchResults(updatedResults)
   }
   return (

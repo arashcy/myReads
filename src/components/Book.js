@@ -1,8 +1,7 @@
 import React from "react";
-import "./App.css";
+import "../App.css";
 
 function Book({book, change}) {
-  console.log('book.js render');
   return (
 
         <div className="book">

@@ -1,5 +1,5 @@
 import React from "react";
-import BookContainer from "./BookContainer";
+import BookContainer from "../containers/BookContainer";
 
 export default function MyReads({setShowSearchPage, myBooks, setMyBooks}) {
   return (

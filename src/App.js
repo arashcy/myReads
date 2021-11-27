@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate, Routes, BrowserRouter, Route } from 'react-router-dom'
+import { useNavigate, Routes, Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
-import BookContainer from './BookContainer'
-import SearchContainer from './SearchContainer'
-import MyReads from './MyReads'
+import SearchContainer from './containers/SearchContainer'
+import MyReads from './components/MyReads'
 
 function App() {
-  const [myBooks, setMyBooks] = useState([]) //TODO: change myBooks to mybooks
+  const [myBooks, setMyBooks] = useState([])
   const getMyBooks = async () => {
     setMyBooks(await BooksAPI.getAll())
   }
@@ -21,7 +20,6 @@ function App() {
     if(value) return navigate('/search')
     navigate('/')
   }
-  console.log('app.js render');
   return (
     <div className="app">
       <Routes>

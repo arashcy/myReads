@@ -2,7 +2,6 @@ import React from "react";
 import Book from "./Book";
 
 export default function Search({change, searchResults}) {
-    console.log('search');
     return (
         <div className="search-books-results">
         <ol className="books-grid">

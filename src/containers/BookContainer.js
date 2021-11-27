@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import Book from "./Book";
-import * as BooksAPI from "./BooksAPI";
+import React from "react";
+import Book from "../components/Book";
+import * as BooksAPI from "../BooksAPI";
 
 export default function BookContainer({setMyBooks, myBooks, type, title}) {
   const change = async (book, e) => {
@@ -11,7 +11,6 @@ export default function BookContainer({setMyBooks, myBooks, type, title}) {
     })
     setMyBooks(myBooks)
   };
-  console.log('book container');
   return (
     <div>
       <div className="bookshelf">

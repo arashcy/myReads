@@ -24,7 +24,6 @@ export const getAll = () =>
 
 export const update = (book, shelf) =>
   {
-    console.log(shelf);
   fetch(`${api}/books/${book.id}`, {
     method: 'PUT',
     headers: {
